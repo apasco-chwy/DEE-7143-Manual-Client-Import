@@ -1,6 +1,6 @@
 # Spike DEE-7143: Manual Client Import (MCI)  
 
-A CLI for manually importing non-PMS-integrated clinics to PH.
+A command line program for manually importing non-PMS-integrated clinics to PH.
 
 <br>
 
@@ -21,7 +21,7 @@ A new clinic:
 3. Clinic ships that data file off to ISR for modification
 4. ISR uses that data file to convert into/create a CSV file that follows the specifically defined format 
 5. ISR ships the well-formatted, valid CSV file to PH engineers 
-6. PH engineers use the MCI CLI to import the data to PH 
+6. PH engineers use MCI to import the data to PH 
 7. The clinic can now write prescriptions to their existing customers using PH
 
 <br>
@@ -33,7 +33,7 @@ An existing clinic:
 4. Clinic ships that data file off to ISR for modification
 5. ISR uses that data file to convert into/create a CSV file that follows the specifically defined format 
 6. ISR ships the well-formatted, valid CSV file to PH engineers 
-7. PH engineers use the MCI CLI to import the data to PH, **ensuring that duplicated data is taken care of, and discrepancies in duplicated data do not crash the import**
+7. PH engineers use MCI to import the data to PH, **ensuring that duplicated data is taken care of, and discrepancies in duplicated data do not crash the import**
 8. The clinic no longer needs to spend time asking their existing customer for their name and address to write a prescription, increasing the changes of using PH to write one.
 
 

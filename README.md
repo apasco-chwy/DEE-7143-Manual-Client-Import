@@ -69,14 +69,20 @@ TODO: connect with Cindy Hearn to understand ISR capabilities
 <details><summary>Technical Planning</summary><br>
 
 **Import File Format**  
-the data we need to start: only customer names emails and shipping address
-will I leverage existing mutations or create my own? what if existing mutations change? do the existing ones suffice?
+To start, we will collect
+- customer email
+- customer first name
+- customer last name 
+- shipping address (how do we parse this in our mutation?)
 
-Columns:
-email
-lastname
-firstname
-postal address
+TODO: create an example file and link here
+
+Unique customer identifier options
+- customer email
+- combination of customer first and last name
+- combination of customer first, last name and email
+
+
 
 <br>
 
@@ -88,6 +94,7 @@ TODO: how to handle duplicate data with descrepancy (eg the same user and email,
 TODO: how to handle errors  
 TODO: can this tool be run multiple times? what happens when we rerun an import? should it replace existing records? if im already in there but my address has changed should it change my address?  
 TODO: unique ID is email for the customer - if someone updates their email address , they will appear in the system TWO times (is that okay? is there another checking mechanism?)  
+TODO: will I leverage existing mutations or create my own? do the existing ones suffice?
 
 <br>
 
@@ -108,9 +115,9 @@ eg click import and point to a file to import them
 <br><br>
 </details>
 <details><summary>User Guide</summary><br>
--What's the exact format for ISR to convert into ?
--What are the requirements 
--how to use this tool at the command line
+-What's the exact format for ISR to convert into ?  
+-What are the requirements  
+-how to use this tool at the command line 
 <br>
 </details>
 

@@ -6,8 +6,8 @@ A CLI for manually importing non-PMS-integrated clinics to PH.
 
 ## Background  
 
-- **Problem:** There are currently over 230 production clinics using PH. Clinics that **do not have a PMS connection** are less likely to use PH to write prescriptions for Chewy customers **because is time consuming to manually enter existing clients, addresses, and pets.**
-- **Goal:** Offer new non-PMS-integrated clinics the option to manually import all existing client data to PH at onboarding to support an easy starting point. Offer existing non-PMS-integrated clinics the option to manually import existing client data to PH to improve quality of life and increase chances of using PH for preapprovals.
+- **Problem:** There are currently over 230 production clinics using PH. Clinics that do not have a PMS connection are less likely to use PH to write prescriptions for Chewy customers **because is time consuming to manually enter existing clients, addresses, and pets.**
+- **Goal:** Offer new non-PMS-integrated clinics the option to manually import all existing client data to PH at onboarding to support an easy starting point. Offer existing non-PMS-integrated clinics the option to manually combine client data from their PMS with existing client data in PH to create a single point of storage of client data in PH, improving quality of life and increasing their chances of using PH for preapprovals.
 - **Task:** Design and implement a process and mechanism for manually importing existing client data to PH from a CSV file containing the data in table format.
 
 
@@ -33,7 +33,7 @@ An existing clinic:
 4. Clinic ships that data file off to ISR for modification
 5. ISR uses that data file to convert into/create a CSV file that follows the specifically defined format 
 6. ISR ships the well-formatted, valid CSV file to PH engineers 
-7. PH engineers use the MCI CLI to import the data to PH, **ensuring that duplicated data is taken care of, and discrepancies in duplicated data do not crash the inport**
+7. PH engineers use the MCI CLI to import the data to PH, **ensuring that duplicated data is taken care of, and discrepancies in duplicated data do not crash the import**
 8. The clinic no longer needs to spend time asking their existing customer for their name and address to write a prescription, increasing the changes of using PH to write one.
 
 
@@ -72,12 +72,11 @@ TODO: connect with Cindy Hearn to understand ISR capabilities
 the data we need to start: only customer names emails and shipping address
 will I leverage existing mutations or create my own? what if existing mutations change? do the existing ones suffice?
 
-we define what we want, could be CSV etc
+Columns:
 email
 lastname
 firstname
 postal address
-and that has to be the format from a clinic if they want to import their customers 
 
 <br>
 
@@ -98,6 +97,8 @@ TODO: if the tool can go both ways - generate the CSV file from a PH instance as
 <br>
 
 **Further Development**  
+TODO: how can we also manually import PET information??  
+
 TODO: how to scale this tool to be used in the PH platform as a front end supported feature of PH  
 eg click import and point to a file to import them 
 

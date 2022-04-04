@@ -21,19 +21,19 @@ A new clinic:
 3. Clinic ships that data file off to ISR for modification
 4. ISR uses that data file to convert into/create a CSV file that follows the specifically defined format 
 5. ISR ships the well-formatted, valid CSV file to PH engineers 
-6. PH engineers use MCI to import the data to PH 
+6. PH engineers use manual import tool to import the data to PH 
 7. The clinic can now write prescriptions to their existing customers using PH
 
 <br>
 
 An existing clinic:
-1. An existing clinic chose not to integrate existing client data to PH at onboarding due to lack of understanding of the process
-2. The clinic now experiences the pain point of having to ask existing clientele for their name and address to wrire a preapproval
-3. Clinic exports ALL existing customer data into some file format (some may now overlap with existing data in PH)
+1. An existing clinic chose not to integrate existing client data to PH at onboarding
+2. The clinic now experiences the pain point of having to ask existing clientele for their name and address to write a preapproval
+3. Clinic exports ALL existing customer data into some file format (some data may now overlap with existing data in PH)
 4. Clinic ships that data file off to ISR for modification
 5. ISR uses that data file to convert into/create a CSV file that follows the specifically defined format 
 6. ISR ships the well-formatted, valid CSV file to PH engineers 
-7. PH engineers use MCI to import the data to PH, **ensuring that duplicated data is taken care of, and discrepancies in duplicated data do not crash the import**
+7. PH engineers use manual import tool to import the data to PH, **ensuring that duplicated data is taken care of, and discrepancies in duplicated data do not crash the import**
 8. The clinic no longer needs to spend time asking their existing customer for their name and address to write a prescription, increasing the changes of using PH to write one.
 
 

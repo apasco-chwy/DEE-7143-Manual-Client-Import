@@ -1,13 +1,13 @@
 # Spike DEE-7143: Manual Client Import (MCI)  
 
-A command line program for manually importing non-PMS-integrated clinics to PH.
+A command line program for manually importing non-PIMS-integrated clinics to PH.
 
 <br>
 
 ## Background  
 
-- **Problem:** There are currently over 230 production clinics using PH. Clinics that do not have a PMS connection are less likely to use PH to write prescriptions for Chewy customers because **it is time consuming to manually enter existing client names, addresses, and pets.**
-- **Goal:** Offer new non-PMS-integrated clinics the option to manually import all existing client data to PH at onboarding to support an easy starting point. Offer existing non-PMS-integrated clinics the option to manually combine client data from their PMS with existing client data in PH to create a single point of storage of client data in PH, improving quality of life and increasing their chances of using PH for preapprovals.
+- **Problem:** There are currently over 230 production clinics using PH. Clinics that do not have a PIMS connection are less likely to use PH to write prescriptions for Chewy customers because **it is time consuming to manually enter existing client names, addresses, and pets.**
+- **Goal:** Offer new non-PIMS-integrated clinics the option to manually import all existing client data to PH at onboarding to support an easy starting point. Offer existing non-PIMS-integrated clinics the option to manually combine client data from their PIMS with existing client data in PH to create a single point of storage of client data in PH, improving quality of life and increasing their chances of using PH for preapprovals.
 - **Task:** Design and implement a process and mechanism for manually importing existing client data to PH from a CSV file containing the data in table format.
 
 
@@ -16,7 +16,7 @@ A command line program for manually importing non-PMS-integrated clinics to PH.
 <details><summary>Usage Scenarios</summary><br>
 
 A new clinic:  
-1. Newly onboarded clinic is not able to integrate existing client data to PH because we do not yet support their specific PMS system
+1. Newly onboarded clinic is not able to integrate existing client data to PH because we do not yet support their specific PIMS system
 2. Clinic exports ALL customer data into some file format
 3. Clinic ships that data file off to ISR for modification
 4. ISR uses that data file to convert into/create a CSV file that follows the specifically defined format 
@@ -44,18 +44,18 @@ An existing clinic:
 
 **Definitions**  
 - ISR: Internal Sales Rep 
-- PMS: Practice Management Software (pronounced "pims")
+- PIMS: Practice Information Management System
 - PHI: Pet Health Integrations 
 
 <br>
 
 **Onboarding**  
-TODO: As of now, how do we integrate *with* PMS? What is the **vet experience** connecting their PMS to PH? How can we fit the manual import into onboarding? How can we fit the manual import into existing clinics?
+TODO: As of now, how do we integrate *with* PIMS? What is the **vet experience** connecting their PIMS to PH? How can we fit the manual import into onboarding? How can we fit the manual import into existing clinics?
 
 <br>
 
-**PMS**  
-TODO: connect with Prarabsh and Asha for Overview of PMS service 
+**PIMS**  
+TODO: connect with Prarabsh and Asha for Overview of PIMS service 
 
 <br>
 

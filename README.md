@@ -12,7 +12,6 @@ A command line program for manually importing non-PIMS-integrated clinics to PH.
 
 
 
-<br>
 <details><summary>Usage Scenarios</summary><br>
 
 A new clinic:  
@@ -38,8 +37,9 @@ An existing clinic:
 
 
 
-<br><br>
+
 </details>
+
 <details><summary>Preliminary Research</summary><br>
 
 **Definitions**  
@@ -64,8 +64,9 @@ TODO: connect with Cindy Hearn to understand ISR capabilities
 
 
 
-<br><br>
+
 </details>
+
 <details><summary>Technical Planning</summary><br>
 
 **Import File Format**  
@@ -112,8 +113,8 @@ eg click import and point to a file to import them
 
 
 
-<br><br>
 </details>
+
 <details><summary>User Guide</summary><br>
 -What's the exact format for ISR to convert into ?  
 -What are the requirements  

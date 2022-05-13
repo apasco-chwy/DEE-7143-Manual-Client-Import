@@ -7,7 +7,8 @@ A command line program for manually importing non-PIMS-integrated clinics to PH.
 ## I. Background  
 
 - **Problem:** There are currently over 230 production clinics using PH. Clinics that do not have a PIMS connection are less likely to use PH to write prescriptions for Chewy customers because **it is time consuming to manually enter existing client names, addresses, and pets.**
-- **Goal:** Offer new non-PIMS-integrated clinics the option to manually import all existing client data to PH at onboarding to support an easy starting point. Offer existing non-PIMS-integrated clinics the option to manually combine client data from their PIMS with existing client data in PH to create a single point of storage of client data in PH, improving quality of life and increasing their chances of using PH for preapprovals.
+- **Primary Goal:** Offer new non-PIMS-integrated clinics the option to manually import all existing client data to PH at onboarding to support an easy starting point. 
+- **Potential Scale:** Offer existing non-PIMS-integrated clinics the option to manually combine client data from their PIMS with existing client data in PH to create a single point of storage of client data in PH, improving quality of life and increasing their chances of using PH for preapprovals.
 - **Task:** Design and implement a process and mechanism for manually importing existing client data to PH from a CSV file containing the data in table format.
 
 <br>

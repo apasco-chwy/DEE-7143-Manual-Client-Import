@@ -1,4 +1,4 @@
-# Spike DEE-7143: Manual Client Import (MCI)  
+# Spike DEE-7143: Manual Client Import
 
 A command line program for manually importing non-PIMS-integrated clinics to PH.
 

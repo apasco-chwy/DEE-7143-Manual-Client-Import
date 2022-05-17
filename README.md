@@ -106,10 +106,10 @@ Updated use cases:
 | Use Case    | Integration | Migration | Result |
 | ----------- | ----------- | ----------- | ----------- |
 | Clinic uses non-integrated vendor | Not possible  | Does not want to migrate  | Clinic will have to double-enter all data moving forward  |
-| Clinic uses non-integrated vendor | Not possible  | Wants to migrate at onboarding  | Clinic will not have to re-enter existing data, but will have to double-enter all new data moving forward  |
+| Clinic uses non-integrated vendor | Not possible  | Migrates at onboarding  | Clinic will not have to re-enter existing data, but will have to double-enter all new data moving forward  |
 | Clinic uses non-integrated vendor | Not possible  | Did not migrate at onboarding but x time later wants to migrate  | Clinic will not have to re-enter existing data, but will have to double-enter all new data moving forward, and we will have to deal with data discrepancies that rise out human error during of double-entry  |
-| Clinic uses integrated vendor | Chose integration at onboarding  | No use case for migration  | Clinic is integrated  |
-| Clinic uses integrated vendor | Did not chose integration at onboarding  | While migration is possible, we will strongly suggest they integrate instead of migration (esp once beta testing is complete)  | Clinic ought to be integrated  |
+| Clinic uses integrated vendor | Integrated at onboarding  | No use case for migration  | Clinic is integrated  |
+| Clinic uses integrated vendor | Did not chose to integrate at onboarding  | While migration is possible, we will strongly suggest they integrate instead of migration (esp once beta testing is complete)  | Clinic ought to be integrated  |
 
 Updated Purpose:  
 If this data migration tool does not exist: non-PIMS-integrated clinics will have to double enter ALL data for EVERY single client.  

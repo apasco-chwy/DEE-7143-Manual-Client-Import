@@ -114,9 +114,10 @@ Updated use cases:
 Updated Purpose:  
 If this data migration tool does not exist:  
  - non-PIMS-integrated clinics will have to double enter ALL data for EVERY single client.  
+ 
 If this data migration tool does exist:  
  -  non-PIMS-integrated clinics will only have to double enter data for NEW clients, not existing clients.  
- 
+
 This data migration tool does not solve the non-PIMS-integrated pain point of double entry, it only minimizes it.  
 It will be important to be clear about that expectation with clients (clinics) in the future.  
 

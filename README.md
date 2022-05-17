@@ -141,10 +141,11 @@ What led to this manual import project becomming a need?
 
 **Conclusion**  
 - Integration >>>>> migration  
-- Migration is only a temporary solution  
-- It does not solve any paint point but is a crutch/lessens the double-entry problem  
-- If a clinic has a PIMS vendor we are integrated with, we ought to never offer a data migration to them  
-- Therefore, the use cases and background of this report have been updated to reflect the above findings. 
+- Migration is only a temporary solution. It does not solve any paint point but is a crutch/lessens the double-entry problem.
+- If a clinic has a PIMS vendor we are integrated with, we ought to never offer a data migration to them.
+- Initially, this project aimed to create a tool to be used by ISRs during onboarding. In the initial plan, the ISRs were responsible for formatting data from clinics into a CSV file in a pre-defiend format. I no longer believe this to be an ideal solution. Data manipulation is not the responsibility of an ISR. 
+- Initially, this project aimed to support data migrations for existing non-integrated clinics post-onboarding. I have since re-evaluated this case and have determined that it should be avoided. The data descrepancies that will arise via human error between the time the clinic is onboarded and when they wish to migrate ought not to cost Chewy engineers their time. This data migration service, if offered, should only be offered at the time of onboarding, but not after. 
+- The use cases and background of this report have been updated to reflect the above findings. 
 
 <br>
 
@@ -218,6 +219,7 @@ TODO: how to scale this tool to be used in the PH platform as a front end suppor
 eg click import and point to a file to import them 
 
 Will we ever offer this data migration to be used after onbaording? or only at/before onboarding?
+Important to be transparent with clinics that this migration does not solve their problem - they still need to double enter all new client data. Setting expectations is important for a solution that does not entirely solve the problem.
 
 </details>
 

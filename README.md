@@ -95,7 +95,7 @@ ISR capabilities
 ISR role does not include data manipulation in any form. This project should steer away from that expectation.  
 Onboarding Analyst verifies when everything required prior to activation is completed and coordinates with technical resources (ie Bence) to provide tech team with the lists/scripts to onboard the cohort of clinics each week.  
 Instead of expecting ISRs to manipulate data, the data migration option should be part of the list given to the tech team each week.Then, the script should live with the tech team to be run by the tech team.  
-**The question still stands: Who should be responsible for data migration then?**  
+**The question still stands: Who should be responsible for *formatting* data for the migration then?**  
 
 What led to this manual import project becomming a need:
 1. A clinic had a PIM vendor we DO integrate with (atamark)
@@ -105,11 +105,11 @@ What led to this manual import project becomming a need:
 Updated use cases:  
 | Use Case    | Integration | Migration | Result |
 | ----------- | ----------- | ----------- | ----------- |
-| Clinic uses a vendor we are not integrated with| Not possible  | Does not want to migrate  | Clinic will have to double-enter all data moving forward  |
-| Clinic uses a vendor we are not integrated with| Not possible  | Wants to migrate at onboarding  | Clinic will not have to re-enter existing data, but will have to double-enter all new data moving forward  |
-| Clinic uses a vendor we are not integrated with| Not possible  | Did not migrate at onboarding but x time later wants to migrate  | Clinic will not have to re-enter existing data, but will have to double-enter all new data moving forward, and we will have to deal with data discrepancies that rise out human error during of double-entry  |
-| Clinic uses a vendor we are integrated with  | Chose integration at onboarding  | No use case for migration  | Clinic is integrated  |
-| Clinic uses a vendor we are integrated with  | Did not chose integration at onboarding  | While migration is possible, we will strongly suggest they integrate instead of migration (esp once beta testing is complete)  | Clinic ought to be integrated  |
+| Clinic uses non-integrated vendor | Not possible  | Does not want to migrate  | Clinic will have to double-enter all data moving forward  |
+| Clinic uses non-integrated vendor | Wants to migrate at onboarding  | Clinic will not have to re-enter existing data, but will have to double-enter all new data moving forward  |
+| Clinic uses non-integrated vendor | Not possible  | Did not migrate at onboarding but x time later wants to migrate  | Clinic will not have to re-enter existing data, but will have to double-enter all new data moving forward, and we will have to deal with data discrepancies that rise out human error during of double-entry  |
+| Clinic uses integrated vendor | Chose integration at onboarding  | No use case for migration  | Clinic is integrated  |
+| Clinic uses integrated vendor | Did not chose integration at onboarding  | While migration is possible, we will strongly suggest they integrate instead of migration (esp once beta testing is complete)  | Clinic ought to be integrated  |
 
 Updated Purpose:  
 If this data migration tool does not exist: non-PIMS-integrated clinics will have to double enter ALL data for EVERY single client.  

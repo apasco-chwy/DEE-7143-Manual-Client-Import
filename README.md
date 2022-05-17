@@ -1,14 +1,14 @@
 # Spike DEE-7143: Manual Client Import
 
-A command line program for manually importing non-PIMS-integrated clinics to PH.
+A command line program for manually importing non-PIMS-integrated clinic data to PH.
 
 <br>
 
 ## I. Background  
 
 - **Problem:** There are currently over 230 production clinics using PH. Clinics that do not have a PIMS connection are less likely to use PH to write prescriptions for Chewy customers because **it is time consuming to manually enter existing client names, addresses, and pets.**
-- **Primary Goal:** Offer new non-PIMS-integrated clinics the option to manually import all existing client data to PH at onboarding to support an easy starting point. 
-- **Potential Scale:** Offer existing non-PIMS-integrated clinics the option to manually combine client data from their PIMS with existing client data in PH to create a single point of storage of client data in PH, improving quality of life and increasing their chances of using PH for preapprovals.
+- **Primary Goal:** Offer new non-PIMS-integrated clinics the option to manually import all existing client data to PH at onboarding to reduce the amount of double-entry needed moving forward. Clinics will not have to enter their existing client data into PH.
+- **Potential Scale:** Offer existing non-PIMS-integrated clinics the option to manually combine existing client data from their PIMS with existing client data in PH after they've already started using PH. (Note: if we only offer migration at time of onboarding, then this scaling is not needed.)
 - **Task:** Design and implement a process and mechanism for manually importing existing client data to PH from a CSV file containing the data in table format.
 
 <br><br>

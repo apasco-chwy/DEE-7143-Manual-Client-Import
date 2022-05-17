@@ -100,9 +100,9 @@ Technical background
 - We currently integrate with four PIMS. Anything outside these 4 are not able to be integrated:  
 https://chewyinc.atlassian.net/wiki/spaces/D/pages/1526535756/PIMS+Integration+w+Practice+Hub  
 - Point of Contact: Chris Miley - Chris is in engineering, currently working on expanding our offerings as far as integrations.  
-We are currently testing what it looks like for a clinic to become integrated POST activation. Retroactive integration has been an issue. We are looking for clients who are willing to be part of the beta testing for this.  
+- We are currently testing what it looks like for a clinic to become integrated POST activation. Retroactive integration has been an issue. We are looking for clients who are willing to be part of the beta testing for this.  
 - Cornerstone is the only PIMS we have writeback capabilities for.  
-- **Clinics are conerned with data privacy.** They are concerned that we will steal their data when we integrate.  
+- **Clinics are conerned with data privacy.** They are concerned that we will steal their data when we integrate. **Question: Will this stop them from sending us a data file containing all of their customer data? How will we securely transfer that? What if the file is too large to transfer?**
 - Pet data is integral to clinic data. If this data migration does not support pet data, it is nearly useless. **Question: If this migration does *not* include pet data, what happens when pet parent places an order on chewy.com associated to their pet. How does that order appear in PH if the pet is not stored in PH?**
 
 ISR capabilities  

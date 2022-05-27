@@ -16,6 +16,8 @@ A command line program for manually importing non-PIMS-integrated clinic data to
 ## II. Usage Scenarios
 <details>
 
+<br>
+
 A new clinic:  
 1. Newly onboarded clinic is not able to integrate their PIMS to PH because we do not yet support their specific PIMS vendor
 2. Clinic exports ALL customer data into some file
@@ -45,20 +47,7 @@ An existing clinic:
 
 <br>
 
-## III. Project Implementation Stages
-<details>
-
-**Stage 1: (To complete during Coop)** Create a simple tool that reads in data of a canonical form and calls GraphQL mutations to create/populate that data in PH. Assumes the manual import is taking place **at onboarding time** not after.
-
-**Stage 2: (To be completed by PHI)** Automate the process of converting the clinic-given file into the canonical file format. Requires pet data mapping.
-
-**Stage 3:** Improve the manual import tool to handle potential duplicate data, such that it can be offered to clinics after onboarding. Requires some mechanism for handling duplicate data because by this time the clinic may have already started entering existing client data into PH, so when we pull all the data from their PIMS vendor into PH there will be overlaps. 
-
-</details>
-
-<br>
-
-## IV. Preliminary Research
+## III. Preliminary Research
 <details>
 
 <br>
@@ -167,32 +156,54 @@ What led to this manual import project becomming a need?
 
 <br>
 
-## V. Technical Planning (In progress)
+## IV. Project Implementation Stages
 <details>
-
-**Import File Format**  
-To start, we will collect
-- customer email
-- customer first name
-- customer last name 
-- shipping address (how do we parse this in our mutation?)
-
-TODO: create an example file and link here
-Where will we store the files? (ISRs should)
-What is the output or report that is generated after a file syncs?
-
-
-Unique customer identifier options
-- customer email
-- combination of customer first and last name
-- combination of customer first, last name and email
-
-— if a pet is deceased then we do not want to collect that info 
-NOT Staff data
 
 <br>
 
-TODO: MVP and incremental development plan 
+**Stage 1: (To complete during Coop)** Create a simple tool that reads in data of a canonical form and calls GraphQL mutations to create/populate that data in PH. Assumes the manual import is taking place **at onboarding time** not after.
+
+**Stage 2: (To be completed by PHI)** Automate the process of converting the clinic-given file into the canonical file format. Requires pet data mapping.
+
+**Stage 3:** Improve the manual import tool to handle potential duplicate data, such that it can be offered to clinics after onboarding. Requires some mechanism for handling duplicate data because by this time the clinic may have already started entering existing client data into PH, so when we pull all the data from their PIMS vendor into PH there will be overlaps. 
+
+</details>
+
+<br>
+
+## V. Technical Planning (In progress)
+<details>
+
+<br>
+
+**Import File Format**  
+For each clinic performing a manual import, there will exist two CSV files:
+1. The input CSV: raw data from the clinic (uncleaned data)
+2. The formatted CSV: the canonically formatted CSV that is ready to be fed into the manual import tool (cleaned data) 
+
+The formatted CSV will have the following columns:
+
+| Column Title| Type and Restrictions | 
+| ----------- | ----------- | 
+| **firstName** | a String | 
+| **lastName** | a String | 
+| **email** | a valid email address | 
+| **streetAddress1** | a String | 
+| **streetAddress2** | a String | 
+| **city** | not abbreviated, must exist within the countryArea | 
+| **postal code** | must be valid given the countryArea | 
+| **countryArea** | accepts formats “MA” “Massachusetts” “ma” “Ma” | 
+| **country** | optional, default is “US” | 
+| **phone** | a valid phone number, MUST be prepended with country code (eg +1)  | 
+| **name** | a String | 
+| **kind** | ['Reptile', 'Bird', 'Cat', 'Horse', 'Fish', 'Large Animal', 'Dog', 'Small Pet'] | 
+| **breed** | must exist in Chewy’s breed mapping | 
+| **gender** | one of [‘Male’, ‘Female’, ‘Unknown’] | 
+| **weight** | a Float, must be > 0.0 | 
+| **birthday** | a String formatted YYYY-MM-DD | 
+
+<br>
+ 
 
 **Design Decisions**  
 TODO:  logic plan  
@@ -219,6 +230,9 @@ Minr: can accept CSV OR EXCEL? it will be pretty common for clinics to export in
 CSV is better for developers 
 
 
+What will the output be after the manual import runs? Should be a report with any errors
+— if a pet is deceased then we do not want to collect that info 
+
 <br>
 
 **Test Plan**  
@@ -244,6 +258,8 @@ Important to be transparent with clinics that this migration does not solve thei
 
 ## VI. User Guide (In progress)
 <details>
+
+<br>
 
 -What's the exact format for ISR to convert into ?  
 -What are the requirements  

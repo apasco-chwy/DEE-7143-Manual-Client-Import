@@ -181,6 +181,8 @@ For each clinic performing a manual import, there will exist two CSV files:
 1. The input CSV: raw data from the clinic (uncleaned data)
 2. The formatted CSV: the canonically formatted CSV that is ready to be fed into the manual import tool (cleaned data) 
 
+<br>
+
 The formatted CSV will have the following columns:
 
 | Column Title| Type and Restrictions | 
@@ -196,7 +198,7 @@ The formatted CSV will have the following columns:
 | **country** | optional, default is “US” | 
 | **phone** | a valid phone number, MUST be prepended with country code (eg +1)  | 
 | **name** | a String | 
-| **kind** | ['Reptile', 'Bird', 'Cat', 'Horse', 'Fish', 'Large Animal', 'Dog', 'Small Pet'] | 
+| **kind** | one of ['Reptile', 'Bird', 'Cat', 'Horse', 'Fish', 'Large Animal', 'Dog', 'Small Pet'] | 
 | **breed** | must exist in Chewy’s breed mapping | 
 | **gender** | one of [‘Male’, ‘Female’, ‘Unknown’] | 
 | **weight** | a Float, must be > 0.0 | 
@@ -206,51 +208,40 @@ The formatted CSV will have the following columns:
  
 
 **Design Decisions**  
-TODO:  logic plan  
-TODO: tool plan (which language, frameworks)  
-TODO: how to handle identical, duplicate date  on duplication: Can look at the MOST RECENTLY updated record and keep that one? Create some kind of “score” and let the user decide 
-TODO: how to handle duplicate data with descrepancy (eg the same user and email, but different address)  
-TODO: how to handle errors  
-TODO: can this tool be run multiple times? what happens when we rerun an import? should it replace existing records? if im already in there but my address has changed should it change my address?  
-TODO: unique ID is email for the customer - if someone updates their email address , they will appear in the system TWO times (is that okay? is there another checking mechanism?)  
-TODO: will I leverage existing mutations or create my own? do the existing ones suffice?
-How will we map files to clinics? will each clinic have its own file/folder per PIM vendor? what if a clinic has >1 PIM vendor, do they need to consolidate into one file or do we run it multiple times?
 
-what if there is a network error in the middle of a sync?? - the report should indicate where they stopped. How would we continue from there if stopped in the middle of the process? Should we repeat the process from the beginning or start from where we left off? (i think from the beginning and the thing will handle it)
+Step 1 : determining tools/frameworks, plan logic, plan use of mutations
+Python, pandas, etc 
+any way to create an executable
 
-How to report invalid data during import? eg invalid birthday 
-What if a clinic's previous PIM vendor did not collect information that is required for us to collect? Will it lead to errors? should the system not conclude without the ISR inputting data?
+Step 2 : execute using test data 
+-meet with prarabdh to determing the string matching algorithm 
+— if a pet is deceased then we do not want to collect that info -> this should be taken care of in the first step where the cleaning takes place
 
-maybe the people running this do not have the right python environment 
-client command line application tool instead 
-however you can create an executable 
+Step 3 : handling errors/Error reporting
+At the end of the import, a report will print with any errors that occured during the import
+What if there is a network error in the middle of a sync? -> the report should indicate where it stopped such that we can re-start it from where it left off. Perhaps include an option to say where to start the import from?
+What happens when the tool is run multiples times? by mistake or because of a network error? -> as of right now in this first step we will not be checking for duplicate data we will simply always create new data as we go though the input file. The next step will be checking for duplicate data.
+How to report invalid data during import? eg invalid birthday format -> hopefully this will be taken care of before the data reaches the import tool. All formatting will be done prior to the import tool being run such that the formatted CSV will not produce any formatting errors in the mutations.
+
+What if a clinic's previous PIM vendor did not collect information that is required for us to collect? -> perhaps we should create two new mutations for creating customers and pets that allow some data to be missing. But then moving forward will the missing data cause crashes? probably.
 
 Minor: encoding? UTF-8 or ASCII
-Minr: can accept CSV OR EXCEL? it will be pretty common for clinics to export in Excel files 
-CSV is better for developers 
-
-
-What will the output be after the manual import runs? Should be a report with any errors
-— if a pet is deceased then we do not want to collect that info 
+Minor: can accept CSV OR EXCEL? it will be pretty common for clinics to export in Excel files 
 
 <br>
 
 **Test Plan**  
-TODO: if the tool can go both ways - generate the CSV file from a PH instance as well as PH to CSV and the files will be the same 
+Test Cases:
+- data format invalid -> expected: take that row of data and add it to the output report along with the error 
+- network error in the middle of sync -> expected: take that row of data and add it to the output report along with the error (probably a network error) because it will output a report with all the rows of data that never got imported, we can just use that output report CSV as the new input of running it a second time.
 
 <br>
 
 **Further Development**  
-TODO: how can we also manually import PET information??  
-- PIMS will have different mappings for breed and type etc
-- PIMS service abstracts over that
-What about if a customer is deactivated from the system or if a pet is deceased?
-
-TODO: how to scale this tool to be used in the PH platform as a front end supported feature of PH  
-eg click import and point to a file to import them 
-
-Will we ever offer this data migration to be used after onbaording? or only at/before onboarding?
-Important to be transparent with clinics that this migration does not solve their problem - they still need to double enter all new client data. Setting expectations is important for a solution that does not entirely solve the problem.
+Things to think about when approaching stage 3, handling duplicate data for post-onboarding imports:
+- unique ID is email for the customer - if someone updates their email address , they will appear in the system TWO times (is that okay? is there another checking mechanism?) 
+- how to handle identical, duplicate data that exists in the PIMS system before the import: Can look at the MOST RECENTLY updated record and keep that one? Create some kind of “score” that helps the user understand which data might be the most up to date and let the user decide which data to keep?
+- how to handle duplicate data with descrepancy (eg the same user and email, but different address)  
 
 </details>
 
@@ -260,11 +251,9 @@ Important to be transparent with clinics that this migration does not solve thei
 <details>
 
 <br>
-
--What's the exact format for ISR to convert into ?  
+Important to be transparent with clinics that this migration does not solve their problem - they still need to double enter all new client data. Setting expectations is important for a solution that does not entirely solve the problem.
 -What are the requirements  
--how to use this tool at the command line  
-
+-how to execute this tool at the command line  
 </details>
 
 

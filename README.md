@@ -6,7 +6,7 @@ A command line program for manually importing non-PIMS-integrated clinic data to
 
 ## I. Background  
 
-- **Problem:** There are currently over 230 production clinics using PH. Clinics that do not have a PIMS connection are less likely to use PH to write prescriptions for Chewy customers because **it is time consuming to manually enter existing client names, addresses, and pets.**
+- **Problem:** There are currently over 600 production clinics using PH. Clinics that do not have a PIMS connection are less likely to use PH to write prescriptions for Chewy customers because **it is time consuming to manually enter existing client names, addresses, and pets.** Currently, 40% of clinics on Practice Hub have a cloud-based PIM where integration is not available. 
 - **Primary Goal:** Offer new non-PIMS-integrated clinics the option to manually import all existing client data to PH at onboarding to reduce the amount of double-entry needed moving forward. Clinics will not have to enter their existing client data into PH.
 - **Potential Scale:** Offer existing non-PIMS-integrated clinics the option to manually combine existing client data from their PIMS with existing client data in PH after they've already started using PH.
 - **Task:** Design a process for manually importing existing client data to PH. Define the required data format. Implement a program that consumes data in the predefined format and manually creates and imports the data into the clinic's PH instance database.
@@ -45,7 +45,20 @@ An existing clinic:
 
 <br>
 
-## III. Preliminary Research
+## III. Project Implementation Stages
+<details>
+
+**Stage 1: (To complete during Coop)** Create a simple tool that reads in data of a canonical form and calls GraphQL mutations to create/populate that data in PH. Assumes the manual import is taking place **at onboarding time** not after.
+
+**Stage 2: (To be completed by PHI)** Automate the process of converting the clinic-given file into the canonical file format. Requires pet data mapping.
+
+**Stage 3:** Improve the manual import tool to handle potential duplicate data, such that it can be offered to clinics after onboarding. Requires some mechanism for handling duplicate data because by this time the clinic may have already started entering existing client data into PH, so when we pull all the data from their PIMS vendor into PH there will be overlaps. 
+
+</details>
+
+<br>
+
+## IV. Preliminary Research
 <details>
 
 <br>
@@ -108,7 +121,7 @@ https://chewyinc.atlassian.net/wiki/spaces/D/pages/1526535756/PIMS+Integration+w
 ISR capabilities  
 - ISR role does not include data manipulation in any form. This project should steer away from that expectation.  
 - Onboarding Analyst verifies when everything required prior to activation is completed and coordinates with technical resources (ie Bence) to provide tech team with the lists/scripts to onboard the cohort of clinics each week.  
-- Instead of expecting ISRs to manipulate data, the data migration option should be part of the list given to the tech team each week.Then, the script should live with the tech team to be run by the tech team.  
+- Instead of expecting ISRs to manipulate data, the data migration option should be part of the list given to the tech team each week. Then, the script should live with the tech team to be run by the tech team.  
 - **The question still stands: Who should be responsible for *formatting* data for the migration then?**  
 
 What led to this manual import project becomming a need?  
@@ -140,11 +153,12 @@ What led to this manual import project becomming a need?
 <hr>
 
 **Conclusion**  
-- Integration >>>>> migration  
+- Integration > migration  
 - Migration is only a temporary solution. It does not solve any paint point but is a crutch/lessens the double-entry problem.
 - If a clinic has a PIMS vendor we are integrated with, we ought to never offer a data migration to them.
 - Initially, this project aimed to create a tool to be used by ISRs during onboarding. In the initial plan, the ISRs were responsible for formatting data from clinics into a CSV file in a pre-defiend format. I no longer believe this to be an ideal solution. Data manipulation is not the responsibility of an ISR. 
 - Initially, this project aimed to support data migrations for existing non-integrated clinics post-onboarding. I have since re-evaluated this case and have determined that it should be avoided. The data descrepancies that will arise via human error between the time the clinic is onboarded and when they wish to migrate ought not to cost Chewy engineers their time. This data migration service, if offered, should only be offered at the time of onboarding, but not after. 
+- The biggest challenge of this project will be working with clinics to export the client data file.
 - The use cases and background of this report have been updated to reflect the above findings. 
 
 <br>
@@ -153,7 +167,7 @@ What led to this manual import project becomming a need?
 
 <br>
 
-## IV. Technical Planning (In progress)
+## V. Technical Planning (In progress)
 <details>
 
 **Import File Format**  
@@ -173,6 +187,9 @@ Unique customer identifier options
 - combination of customer first and last name
 - combination of customer first, last name and email
 
+— if a pet is deceased then we do not want to collect that info 
+NOT Staff data
+
 <br>
 
 TODO: MVP and incremental development plan 
@@ -180,7 +197,7 @@ TODO: MVP and incremental development plan
 **Design Decisions**  
 TODO:  logic plan  
 TODO: tool plan (which language, frameworks)  
-TODO: how to handle identical, duplicate date  
+TODO: how to handle identical, duplicate date  on duplication: Can look at the MOST RECENTLY updated record and keep that one? Create some kind of “score” and let the user decide 
 TODO: how to handle duplicate data with descrepancy (eg the same user and email, but different address)  
 TODO: how to handle errors  
 TODO: can this tool be run multiple times? what happens when we rerun an import? should it replace existing records? if im already in there but my address has changed should it change my address?  
@@ -225,7 +242,7 @@ Important to be transparent with clinics that this migration does not solve thei
 
 <br>
 
-## V. User Guide (In progress)
+## VI. User Guide (In progress)
 <details>
 
 -What's the exact format for ISR to convert into ?  
